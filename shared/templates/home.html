@@ -46,7 +46,22 @@
         </ul>
       </div>
     </nav>
+    {% if request.user.is_authenticated %}
+    <button>
+      <a class="nav-link" href="{% url 'logout' %}">logout</a>
+    </button>
 
+    {% else %}
+
+    <button>
+      <a class="nav-link" href="{% url 'register' %}">Register</a>
+    </button>
+
+    <button>
+      <a class="nav-link" href="{% url 'login' %}">login</a>
+    </button>
+
+    {% endif %}
     <main class="bg-light h-100">
       <article class="container">
         <h1>Welcome to our awesome movie database!</h1>

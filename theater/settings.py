@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     "shared",
     "users",
 ]
+LOGIN_URL = "login"
 
-# CRISPY_TEMPLATE_PACK = "bootstrap4"ß
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

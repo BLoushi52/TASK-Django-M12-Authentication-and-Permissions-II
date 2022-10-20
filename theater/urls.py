@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from movies import views as movie_views
 from shared import views as shared_views
-from users.views import user_register
+from users.views import user_register, user_logout, user_login
 
 
 urlpatterns = [
@@ -27,5 +27,8 @@ urlpatterns = [
     path("movies/<int:movie_id>/", movie_views.get_movie, name="movie-detail"),
     path("movies/add/", movie_views.create_movie, name="create-movie"),
     path("register_user/",user_register , name="register"),
+    path("login/",user_login , name="login"),
+    path("logout/",user_logout , name="logout"),
+    
     
 ]
