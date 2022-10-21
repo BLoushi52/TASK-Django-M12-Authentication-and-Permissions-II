@@ -35,33 +35,34 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">
-              Home <span class="sr-only">(current)</span>
+            <a class="nav-link" href="{% url 'movie-list' %}"
+              >Movies
+              <span class="sr-only">(current)</span>
             </a>
           </li>
+          {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'movie-list' %}">Movies</a>
+            <a class="nav-link" href="{% url 'create-movie' %}">[ Add Movie ]</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">[ Logout ]</a>
+          </li>
+
+            {% else %}
+            <li class="nav-item"></li>
+            <a class="nav-link" href="{% url 'login' %}">[ Login ]</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">[ Register ]</a>
+          </li>
+            {% endif %}
         </ul>
       </div>
     </nav>
-    {% if request.user.is_authenticated %}
-    <button>
-      <a class="nav-link" href="{% url 'logout' %}">logout</a>
-    </button>
-
-    {% else %}
-
-    <button>
-      <a class="nav-link" href="{% url 'register' %}">Register</a>
-    </button>
-
-    <button>
-      <a class="nav-link" href="{% url 'register' %}">login</a>
-    </button>
-
-    {% endif %}
     <main class="bg-light h-100">
       <article class="container py-2">
         <h1>Movies</h1>
@@ -69,13 +70,12 @@
         <section class="row row-cols-1 row-cols-md-2">
           {% for movie in movies %}
           <div class="col mb-4">
-            <div class="card">
+            <div class="card shadow bg-white">
               <div class="card-body">
-                <h5 class="card-title">
-                  {{ movie.name }} by {{ movie.author.first_name }} {{
-                  movie.author.last_name }}
-                </h5>
-                <p class="card-text text-truncate" style="max-width: 30ch">
+                <h4 class="card-title">
+                  {{ movie.name }}
+                </h4>
+                <p class="card-text text-truncate" style="max-width: 40ch">
                   {{ movie.plot }}
                 </p>
                 <a

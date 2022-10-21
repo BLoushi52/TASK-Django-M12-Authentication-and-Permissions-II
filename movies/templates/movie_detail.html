@@ -49,14 +49,11 @@
 
     <main class="bg-light h-100">
       <article class="container py-2">
-        <h1 class="card-title">
-          {{ movie.name }} by {{ movie.author.first_name }} {{
-          movie.author.last_name }}
-        </h1>
+        <h1 class="card-title">{{ movie.name }}</h1>
         <p class="card-text">{{ movie.plot }}</p>
-        <p class="card-text">
-          Created by: {{ movie.created_by.first_name }} {{
-          movie.created_by.last_name }}
+        <p class="badge bg-dark rounded-pill text-white px-3">
+          Created by:
+          <span class="px-2">{{ movie.created_by.first_name }}</span>
         </p>
       </article>
     </main>

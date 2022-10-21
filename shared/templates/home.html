@@ -43,25 +43,22 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'movie-list' %}">Movies</a>
           </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">[ Logout ]</a>
+          </li>
+
+            {% else %}
+            <li class="nav-item"></li>
+            <a class="nav-link" href="{% url 'login' %}">[ Login ]</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">[ Register ]</a>
+          </li>
+            {% endif %}
         </ul>
       </div>
     </nav>
-    {% if request.user.is_authenticated %}
-    <button>
-      <a class="nav-link" href="{% url 'logout' %}">logout</a>
-    </button>
-
-    {% else %}
-
-    <button>
-      <a class="nav-link" href="{% url 'register' %}">Register</a>
-    </button>
-
-    <button>
-      <a class="nav-link" href="{% url 'login' %}">login</a>
-    </button>
-
-    {% endif %}
     <main class="bg-light h-100">
       <article class="container">
         <h1>Welcome to our awesome movie database!</h1>

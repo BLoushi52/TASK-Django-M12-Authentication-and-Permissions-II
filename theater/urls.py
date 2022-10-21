@@ -22,7 +22,7 @@ from users.views import user_register, user_logout, user_login
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("home/", shared_views.home, name="home"),
+    path("", shared_views.home, name="home"),
     path("movies/", movie_views.get_movies, name="movie-list"),
     path("movies/<int:movie_id>/", movie_views.get_movie, name="movie-detail"),
     path("movies/add/", movie_views.create_movie, name="create-movie"),
