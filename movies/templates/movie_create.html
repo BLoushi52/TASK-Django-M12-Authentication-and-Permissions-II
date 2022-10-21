@@ -49,12 +49,17 @@
       </nav>
   
       <main class="bg-light h-100">
+        <div class="container">
+          <div class="">
+        <h1>Add Movie</h1>
         <form class="container py-2" action="{% url 'create-movie' %}" method="POST">
             <!-- prettier-ignore -->
             {% csrf_token %}
-            {{ form | crispy }}
+            {{form|crispy}}
             <button class="btn btn-success" type="submit">Add Movie</button>
         </form>
+      </div>
+      </div>
       </main>
   
       <footer class="mt-auto text-center py-2">

@@ -2,7 +2,7 @@ from django.db import OperationalError
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from movies.forms import MovieForm
+from movies.forms import MovieForm, User
 from movies.models import Movie
 
 
@@ -27,14 +27,15 @@ def get_movie(request, movie_id):
 
 @login_required
 def create_movie(request):
-    form = MovieForm()
+    form = MovieForm({'created_by': request.user})
     if request.method == "POST":
         # BONUS: This needs to have the `user` injected in the constructor
         # somehow
+        
         form = MovieForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("home")
+            return redirect("movie-list")
 
     context = {
         "form": form,
